@@ -41,9 +41,7 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "src/app/_document.js",
-        "src/redux/store/firebase.ts",
-        "server/index.js"
+        "src/app/_document.js"
     ],
     "exclude": ["node_modules"]
 }
