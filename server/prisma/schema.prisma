@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Role {
+  id          Int    @id @default(autoincrement())
+  value       String @unique
+  description String
+  users       User[]
+}
+
+model Category {
+  id         Int          @id @default(autoincrement())
+  value      String       @unique
+  Restaurant Restaurant[]
+  Dishe      Dishe[]
+}
+
+model Status {
+  id         Int          @id @default(autoincrement())
+  value      String       @unique
+  Restaurant Restaurant[]
+  Dishe      Dishe[]
+}
+
+model Adress {
+  id           Int            @id @default(autoincrement())
+  User         User[]
+  TelegramUser TelegramUser[]
+  country      String
+  region       String
+  index        Int?
+  adress       String
+}
+
+model Basket {
+  id             Int           @id @default(autoincrement())
+  Dishe          Dishe[]
+  TelegramUser   TelegramUser? @relation(fields: [telegramUserId], references: [id])
+  telegramUserId String?       @unique
+  User           User?         @relation(fields: [userId], references: [id])
+  userId         String?       @unique
+}
+
+model TelegramUser {
+  id          String   @id
+  isConnected Boolean  @default(false)
+  User        User[]
+  Adress      Adress[]
+  phone       String
+  Basket      Basket?
+}
+
+model User {
+  id               String             @id @default(cuid())
+  email            String             @unique
+  name             String
+  password         String
+  banned           Boolean            @default(false)
+  banReason        String?
+  roles            Role[]
+  likeRetaurants   Restaurant[]
+  ReviewRestaurant ReviewRestaurant[]
+  likeDishes       Dishe[]
+  ReviewDishe      ReviewDishe[]
+  TelegramUser     TelegramUser[]
+  Adress           Adress[]
+  Basket           Basket?
+}
+
+model Restaurant {
+  id           String             @id @default("")
+  src          String             @default("")
+  statusModel  Status?            @relation(fields: [status], references: [value])
+  status       String?
+  category     Category[]
+  middleCheck  Float              @default(0.0)
+  title        String             @default("")
+  rating       Float              @default(0.0)
+  review       ReviewRestaurant[]
+  deliveryTime Int                @default(0)
+  dishes       Dishe[]
+  User         User[]
+}
+
+model Dishe {
+  id           String        @id @default(cuid())
+  statusModel  Status?       @relation(fields: [status], references: [value])
+  status       String?
+  category     Category[]
+  src          String?
+  title        String        @default("")
+  deliveryTime Int           @default(0)
+  rating       Float         @default(0.0)
+  review       ReviewDishe[]
+  price        Float         @default(0.0)
+  Restaurant   Restaurant    @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+  User         User[]
+  basket       Basket[]
+}
+
+model ReviewRestaurant {
+  id           String     @id @default(uuid())
+  User         User       @relation(fields: [userId], references: [id])
+  userId       String
+  text         String     @default("")
+  rating       Int        @default(0)
+  Restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+}
+
+model ReviewDishe {
+  id      String @id @default(uuid())
+  User    User   @relation(fields: [userId], references: [id])
+  userId  String
+  text    String @default("")
+  rating  Int    @default(0)
+  Dishe   Dishe  @relation(fields: [disheId], references: [id])
+  disheId String
+}

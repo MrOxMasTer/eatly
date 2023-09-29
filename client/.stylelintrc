@@ -1,0 +1,29 @@
+{
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-standard-scss",
+        "stylelint-config-clean-order",
+        "stylelint-prettier/recommended"
+    ],
+    "customSyntax": "postcss-styled-syntax",
+    "plugins": [
+        "stylelint-order",
+        "stylelint-scss",
+        "stylelint-declaration-block-no-ignored-properties"
+    ],
+    "ignoreFiles": [
+        "*.config.ts",
+        "*.config.js",
+        "public/*",
+        "build/*",
+        "node_modules/*"
+    ],
+    "rules": {
+        "no-empty-source": null,
+        "prettier/prettier": true,
+        "block-no-empty": null,
+        "import-notation": null,
+        "font-family-name-quotes": null,
+        "plugin/declaration-block-no-ignored-properties": true
+    }
+}
