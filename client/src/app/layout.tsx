@@ -10,11 +10,10 @@ import {
     Roboto,
 } from 'next/font/google';
 
-import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import type { Metadata } from 'next';
+import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 
-import { Metadata } from 'next';
-
-import Providers from '@/lib/Providers';
+import Providers from '@/shared/lib/Providers/QueryClientProviders';
 
 export const metadata: Metadata = {
     title: 'Home',

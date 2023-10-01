@@ -1,13 +1,10 @@
 'use client';
 
+import { CardDishe, SkeletonDishe } from '@/entities/dishe/ui';
+import { useRestaurantById } from '@/entities/restaurant/model';
+import { CardRestaurant, SkeletonRestaurant } from '@/entities/restaurant/ui';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import { match } from 'ts-pattern';
-
-import useRestaurantById from '@/hooks/useRestaurantById';
-import ItemDishes from '@/ui/ItemDishes';
-import ItemRestaurants from '@/ui/ItemRestaurants';
-import { Skeleton } from '@/ui/Skeleton';
-import SkeletonItemDishes from '@/ui/SkeletonItemDishes';
-import SkeletonItemRestaurants from '@/ui/SkeletonItemRestaurants';
 
 const Restaurants = ({
     params: { id: restaurantId },
@@ -21,11 +18,11 @@ const Restaurants = ({
             {match(status)
                 .with('loading', () => (
                     <>
-                        <SkeletonItemRestaurants />
+                        <SkeletonRestaurant />
                         <Skeleton className="mt-24 h-8 w-28" />
                         <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10">
                             {[10, 11, 12, 13].map((i) => (
-                                <SkeletonItemDishes key={`skeleton-${i}`} />
+                                <SkeletonDishe key={`skeleton-${i}`} />
                             ))}
                         </ul>
                     </>
@@ -36,14 +33,14 @@ const Restaurants = ({
 
                         return (
                             <>
-                                <ItemRestaurants restaurant={restaurant} />
+                                <CardRestaurant restaurant={restaurant} />
                                 <div className="mt-24">
                                     <h3 className="text-[1.5625rem] font-semibold leading-[1.125rem]">
                                         Popular &#128293;
                                     </h3>
                                     <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10">
                                         {dishes?.popular?.map((dishe) => (
-                                            <ItemDishes
+                                            <CardDishe
                                                 key={dishe.id}
                                                 dishe={dishe}
                                             />
@@ -56,7 +53,7 @@ const Restaurants = ({
                                     </h3>
                                     <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10">
                                         {dishes?.dishes?.map((dishe) => (
-                                            <ItemDishes
+                                            <CardDishe
                                                 key={dishe.id}
                                                 dishe={dishe}
                                             />

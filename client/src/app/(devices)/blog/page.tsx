@@ -1,6 +1,6 @@
-import { EmailSubscribe } from '@/modules/EmailSubscribe';
-import { FrequentQuestions } from '@/modules/FrequentQuestions';
-import { LatestArticles } from '@/modules/LatestArticles';
+import { EmailSubscribe } from '@/features/EmailSubscribe';
+import { FrequentQuestions } from '@/widgets/FrequentQuestions';
+import { LatestArticles } from '@/widgets/LatestArticles';
 
 const Blog = () => (
     <main>

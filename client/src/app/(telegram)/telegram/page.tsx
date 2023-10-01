@@ -1,19 +1,24 @@
 'use client';
 
-import { useEffect } from 'react';
-
+import useTelegram from '@/shared/lib/hooks/useTelegram';
+import { cn } from '@/shared/lib/utils/cn';
+import { MenuContents } from '@/widgets/MenuContents';
 import { LucideLoader } from 'lucide-react';
 
-import { cn } from '@/helpers/utils';
-import useTelegram from '@/hooks/useTelegram';
-import { MenuContents } from '@/modules/MenuContents';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const Telegram = () => {
-    const { wa, isLoading } = useTelegram();
+    const { wa, isLoading, isError } = useTelegram();
+    const router = useRouter();
 
     useEffect(() => {
+        if (wa && isError) {
+            router.push('/');
+        }
+
         wa?.ready();
-    }, [wa]);
+    }, [wa, isError]);
 
     return (
         <main>

@@ -1,4 +1,4 @@
-import { FrequentQuestions } from '@/modules/FrequentQuestions';
+import { FrequentQuestions } from '@/widgets/FrequentQuestions';
 
 export default function RootLayout({
     children,

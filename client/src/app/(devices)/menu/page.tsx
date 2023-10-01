@@ -1,7 +1,7 @@
-import Banner from '@/components/Banner';
-import { MenuContents } from '@/modules/MenuContents';
-import { TopDishes } from '@/modules/TopDishes';
-import { TopRestaurants } from '@/modules/TopRestaurants';
+import { Banner } from '@/shared/ui/Banner';
+import { MenuContents } from '@/widgets/MenuContents';
+import { TopDishes } from '@/widgets/TopDishes';
+import { TopRestaurants } from '@/widgets/TopRestaurants';
 
 const Menu = () => (
     <>

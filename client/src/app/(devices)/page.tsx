@@ -1,11 +1,10 @@
-import { AdvertisementMobileApp } from '@/modules/AdvertisementMobileApp';
-import { ControlPurchases } from '@/modules/ControlPurchases';
-import { EmailSubscribe } from '@/modules/EmailSubscribe';
-import { Features } from '@/modules/Features';
-import { HeroSection } from '@/modules/HeroSection';
-import { QuoteCustomer } from '@/modules/QuoteCustomer';
-import { TopDishes } from '@/modules/TopDishes';
-import { TopRestaurants } from '@/modules/TopRestaurants';
+import { AdvertisementMobileApp } from '@/widgets/AdvertisementMobileApp/ui/AdvertisementMobileApp';
+import { ControlPurchases } from '@/widgets/ControlPurchases';
+import { Features } from '@/widgets/Features';
+import { HeroSection } from '@/widgets/HeroSection';
+import { QuoteCustomer } from '@/widgets/QuoteCustomer';
+import { TopDishes } from '@/widgets/TopDishes';
+import { TopRestaurants } from '@/widgets/TopRestaurants';
 
 const Home = () => (
     <main className="overflow-hidden bg-pureWhite">
@@ -16,7 +15,6 @@ const Home = () => (
         <TopDishes />
         <ControlPurchases />
         <QuoteCustomer />
-        <EmailSubscribe />
     </main>
 );
 

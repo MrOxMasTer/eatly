@@ -8,7 +8,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "ngrok": "ngrok http 3000"
+        "ngrok": "npx ngrok start web --config \"G:/Programmy/Practic Website/eatly/ngrok.yml\""
     },
     "dependencies": {
         "@radix-ui/react-accordion": "^1.1.2",

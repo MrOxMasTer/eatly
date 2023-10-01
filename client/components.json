@@ -11,6 +11,6 @@
     },
     "aliases": {
         "components": "@//",
-        "utils": "@/helpers/utils"
+        "utils": "@/shared/lib/utils/utils"
     }
 }
