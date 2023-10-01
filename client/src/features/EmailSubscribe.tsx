@@ -3,7 +3,7 @@ import Image from 'next/image';
 import SweDishBig from '../../public/images/SweDishBig.png';
 
 export const EmailSubscribe = () => (
-    <div className="relative rounded-[15px] bg-primary px-[27px] pb-[293px] pt-[115px]">
+    <div className="relative mb-[178px] mt-[80px] rounded-[15px] bg-primary px-[27px] pb-[115px] pt-[35px]">
         <span className="block text-center text-4xl font-extrabold uppercase text-white">
             get 50%
         </span>

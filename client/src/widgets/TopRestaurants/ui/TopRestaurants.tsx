@@ -1,5 +1,5 @@
 import { ViewAll } from '@/shared/ui/ViewAll';
-import ListRestaurants from '../../../entities/restaurant/ui/ListRestaurants';
+import { ListRestaurants } from '../../../entities/restaurant/ui/ListRestaurants';
 
 export const TopRestaurants = ({
     className = '',

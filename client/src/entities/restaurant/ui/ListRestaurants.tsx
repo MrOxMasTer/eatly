@@ -5,7 +5,8 @@ import { match } from 'ts-pattern';
 import { useTopRestaurants } from '../model';
 import { CardRestaurant } from './CardRestaurant';
 import { SkeletonRestaurant } from './SkeletonRestaurant';
-const ListRestaurants = () => {
+
+export const ListRestaurants = () => {
     const { data, status } = useTopRestaurants();
 
     const listVariants = {
@@ -69,5 +70,3 @@ const ListRestaurants = () => {
         </>
     );
 };
-
-export default ListRestaurants;

@@ -1,6 +1,6 @@
 'use client';
 
-import { CardDishes, SkeletonDishe } from '@/entities/dishe/ui';
+import { CardDishe, SkeletonDishe } from '@/entities/dishe/ui';
 import { useRestaurantById } from '@/entities/restaurant/model';
 import { CardRestaurant, SkeletonRestaurant } from '@/entities/restaurant/ui';
 import { Skeleton } from '@/shared/ui/Skeleton';
@@ -40,7 +40,7 @@ const Restaurants = ({
                                     </h3>
                                     <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10">
                                         {dishes?.popular?.map((dishe) => (
-                                            <CardDishes
+                                            <CardDishe
                                                 key={dishe.id}
                                                 dishe={dishe}
                                             />
@@ -53,7 +53,7 @@ const Restaurants = ({
                                     </h3>
                                     <ul className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10">
                                         {dishes?.dishes?.map((dishe) => (
-                                            <CardDishes
+                                            <CardDishe
                                                 key={dishe.id}
                                                 dishe={dishe}
                                             />
