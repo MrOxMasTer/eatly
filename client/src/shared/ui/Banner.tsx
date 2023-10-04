@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import SweDish from '../../public/images/sweDish.png';
+import SweDish from '../../../public/images/SweDishBig.png';
 
 export const Banner = () => (
     <div className="banner relative mt-[62px] rounded-[7.555px] bg-blueViolet bg-banner px-6 py-5">

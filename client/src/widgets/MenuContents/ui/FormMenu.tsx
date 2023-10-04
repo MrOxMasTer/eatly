@@ -2,36 +2,43 @@
 
 import { FormProvider, useForm } from 'react-hook-form';
 
-import useStateForm from '../helpers/useStateForm';
-
 import { TFormMenu } from '@/widgets/MenuContents/formMenu.types';
 import { BarSearch } from './BarSearch';
-import { Filter } from './Filter';
 
 // TODO: Сделать валидацию формы
 
-export const FormMenu = () => {
-    const setQuery = useStateForm((state) => state.setQuery);
+interface IFormMenu {
+    selectedSearchParams: TFormMenu;
+}
+
+export const FormMenu = ({ selectedSearchParams }: IFormMenu) => {
     const methods = useForm<TFormMenu>({
-        defaultValues: {
-            price: 0,
-            search: '',
-            appearance: '',
-            recomended: '',
-            mostPopular: '',
-        },
+        defaultValues: selectedSearchParams,
     });
 
     const { handleSubmit } = methods;
 
-    const onSubmit = (data: TFormMenu) => setQuery(data);
+    const onSubmit = (data: TFormMenu) => {
+        // setQuery(data)
+        console.log(data);
+    };
 
     return (
         <FormProvider {...methods}>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Filter />
+                {/* <Filter /> */}
                 <BarSearch />
             </form>
         </FormProvider>
     );
 };
+
+// const methods = useForm<TFormMenu>({
+//     defaultValues: {
+//         price: 0,
+//         search: '',
+//         appearance: '',
+//         recomended: '',
+//         mostPopular: '',
+//     },
+// });

@@ -1,35 +1,32 @@
 // TODO: сделать валидацию всех запросов
 
 import { TFormMenuLite } from '@/widgets/MenuContents/formMenu.types';
-import { instanse } from '../instance';
-import { TRestaurant, TRestaurantById } from './models';
+import { api } from '../api';
 
 export const restaurantsServices = {
-    async getRestaurantById(id: string) {
-        return instanse
-            .get<TRestaurantById>(`/restaurants/${id}`)
+    async getRestaurantById<T>(id: string) {
+        return api
+            .get<T>(`/restaurants/${id}`)
             .then((response) => response?.data);
     },
 
-    async getRestaurants() {
-        return instanse
-            .get<TRestaurant[]>('/restaurants')
+    async getRestaurants<T>() {
+        return api.get<T>('/restaurants').then((response) => response?.data);
+        // .then(SRestaurants.parse);
+    },
+
+    async getTopRestaurants<T>() {
+        return api
+            .get<T>('/restaurants/top')
             .then((response) => response?.data);
         // .then(SRestaurants.parse);
     },
 
-    async getTopRestaurants() {
-        return instanse
-            .get<TRestaurant[]>('/restaurants/top')
-            .then((response) => response?.data);
-        // .then(SRestaurants.parse);
-    },
-
-    async getRestaurantsByForm(query: TFormMenuLite) {
+    async getRestaurantsByForm<T>(query: TFormMenuLite) {
         const { category, mostPopular, price, recomended, search } = query;
 
-        return instanse
-            .get<TRestaurant[]>('/restaurants/menu', {
+        return api
+            .get<T>('/restaurants/menu', {
                 params: {
                     ...(search ? { search } : {}),
                     ...(category ? { category } : {}),
@@ -38,10 +35,7 @@ export const restaurantsServices = {
                     ...(recomended ? { recomended } : {}),
                 },
             })
-            .then((response) => response?.data)
-            .catch((err) => {
-                console.log(err);
-            });
+            .then((response) => response?.data);
         // .then(SRestaurants.parse);
     },
 };

@@ -12,8 +12,7 @@ import {
 
 import type { Metadata } from 'next';
 import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
-
-import Providers from '@/shared/lib/Providers/QueryClientProviders';
+import QueryClientProviders from './QueryClientProviders';
 
 export const metadata: Metadata = {
     title: 'Home',
@@ -91,7 +90,7 @@ export default function RootLayout({
         <html lang="en">
             <body
                 className={`debug-screens relative font-eatly ${poppins.variable} ${inter.variable} ${publicSans.variable} ${manrope.variable} ${roboto.variable} ${quicksand.variable} ${plusJakartaSans.variable}`}>
-                <Providers>{children}</Providers>
+                <QueryClientProviders>{children}</QueryClientProviders>
             </body>
         </html>
     );

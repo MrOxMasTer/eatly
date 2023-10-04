@@ -1,24 +1,44 @@
-'use client';
-
-import useFormMenu from '@/shared/lib/hooks/useFormMenu';
-import useStateForm from '../helpers/useStateForm';
 import { FormMenu } from './FormMenu';
 
+import { TDishe, TRestaurant } from '@/shared/api';
+import { dishesServices } from '@/shared/api/dishe/dishes';
+import { restaurantsServices } from '@/shared/api/restaurant/restaurants';
+import { undefined } from 'zod';
+import { TFormMenu } from '../formMenu.types';
 import { ListMenu } from './ListMenu';
 
-export const MenuContents = () => {
-    const query = useStateForm((state) => state.query);
-    const { data, status } = useFormMenu(query);
+interface IMenuContents {
+    selectedSearchParams: TFormMenu;
+}
+
+const getInitialData = async (selectedSearchParams: TFormMenu) => {
+    const { appearance, ...query } = selectedSearchParams;
+
+    if (appearance === 'restaurants') {
+        return restaurantsServices.getRestaurantsByForm<TRestaurant[]>({
+            ...query,
+        });
+    }
+    if (appearance === 'dishes') {
+        return dishesServices.getDishesByForm<TDishe[]>({
+            ...query,
+        });
+    }
+
+    return undefined;
+};
+
+export const MenuContents = async ({ selectedSearchParams }: IMenuContents) => {
+    const initialData = await getInitialData(selectedSearchParams);
 
     return (
         <section>
             <h2 className="visually-hidden">Menu</h2>
             <div className="container">
-                <FormMenu />
+                <FormMenu selectedSearchParams={selectedSearchParams} />
                 <ListMenu
-                    appearance={query?.appearance || ''}
-                    data={data || []}
-                    status={status}
+                    initialData={initialData}
+                    selectedSearchParams={selectedSearchParams}
                 />
             </div>
         </section>

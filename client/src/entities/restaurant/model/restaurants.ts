@@ -4,10 +4,16 @@ import { restaurantsServices } from '@/shared/api/restaurant/restaurants';
 
 import { useQuery } from '@tanstack/react-query';
 
-export const useRestaurantById = (restaurantId: number | string) =>
-    useQuery(['restaurants', restaurantId], () =>
-        restaurantsServices.getRestaurantById(restaurantId),
+export const useRestaurantById = <T>(initialData: T, restaurantId: string) =>
+    useQuery<T>(
+        ['restaurants', restaurantId],
+        () => restaurantsServices.getRestaurantById<T>(restaurantId),
+        { initialData },
     );
 
-export const useTopRestaurants = () =>
-    useQuery(['restaurants'], () => restaurantsServices.getTopRestaurants());
+export const useTopRestaurants = <T>(initialData: T) =>
+    useQuery<T>(
+        ['restaurants'],
+        () => restaurantsServices.getTopRestaurants<T>(),
+        { initialData },
+    );

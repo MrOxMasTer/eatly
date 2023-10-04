@@ -1,4 +1,4 @@
-import { TFeature } from '../constants/featureslist';
+import { TFeature } from '../constants/featuresList';
 
 interface IFeatureProps {
     feature: TFeature;

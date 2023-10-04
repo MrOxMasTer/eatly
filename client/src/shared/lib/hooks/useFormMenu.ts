@@ -1,14 +1,13 @@
+import { dishesServices } from '@/shared/api/dishe/dishes';
+import { restaurantsServices } from '@/shared/api/restaurant/restaurants';
+import { TFormMenu } from '@/widgets/MenuContents/formMenu.types';
 import { useQuery } from '@tanstack/react-query';
 
-import { dishesServices } from '@/services/dishes.service';
-import { restaurantsServices } from '@/services/restaurants.service';
-import { TFormMenu } from '@/types/formMenu.types';
-
-const useFormMenu = (dto: TFormMenu) =>
+const useFormMenu = (initialData: any, selectedSearchParams: TFormMenu) =>
     useQuery(
-        [dto?.appearance, dto],
+        [selectedSearchParams?.appearance, selectedSearchParams],
         () => {
-            const { appearance, ...query } = dto;
+            const { appearance, ...query } = selectedSearchParams;
 
             if (appearance === 'restaurants') {
                 return restaurantsServices.getRestaurantsByForm({
@@ -21,11 +20,12 @@ const useFormMenu = (dto: TFormMenu) =>
                 });
             }
 
-            return null;
+            return undefined;
         },
         {
-            enabled: JSON.stringify(dto) !== '{}',
-            useErrorBoundary: true,
+            initialData,
+            // enabled: JSON.stringify(dto) !== '{}',
+            // useErrorBoundary: true,
         },
     );
 

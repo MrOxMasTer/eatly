@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+// z.union([z.string(), z.string().array()]).optional()
+
 export const SFormMenu = z.object({
     category: z.string().optional(),
     recomended: z.string().optional(),

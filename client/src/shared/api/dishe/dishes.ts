@@ -1,29 +1,24 @@
 // TODO: сделать валидацию всех запросов
 
 import { TFormMenuLite } from '@/widgets/MenuContents/formMenu.types';
-import { instanse } from '../instance';
-import { TDishe } from './models';
+import { api } from '../api';
 
 export const dishesServices = {
-    async getDishes() {
-        return instanse
-            .get<TDishe[]>('/dishes')
-            .then((response) => response?.data);
+    async getDishes<T>() {
+        return api.get<T>('/dishes').then((response) => response?.data);
         // .then(SRestaurants.parse);
     },
 
-    async getTopDishes() {
-        return instanse
-            .get<TDishe[]>('/dishes/top')
-            .then((response) => response?.data);
+    async getTopDishes<T>() {
+        return api.get<T>('/dishes/top').then((response) => response?.data);
         // .then(SRestaurants.parse);
     },
 
-    async getDishesByForm(query: TFormMenuLite) {
+    async getDishesByForm<T>(query: TFormMenuLite) {
         const { category, mostPopular, price, recomended, search } = query;
 
-        return instanse
-            .get<TDishe[]>('/dishes/menu', {
+        return api
+            .get<T>('/dishes/menu', {
                 params: {
                     ...(search ? { search } : {}),
                     ...(category ? { category } : {}),
