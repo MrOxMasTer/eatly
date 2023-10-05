@@ -4,8 +4,8 @@ import { z } from 'zod';
 
 export const SFormMenu = z.object({
     category: z.string().optional(),
-    recomended: z.string().optional(),
-    mostPopular: z.string().optional(),
+    recomended: z.number().optional(),
+    mostPopular: z.number().optional(),
     price: z.number().optional(),
     search: z.string().optional(),
     appearance: z.string().optional(),

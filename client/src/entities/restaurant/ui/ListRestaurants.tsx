@@ -2,16 +2,13 @@
 
 import { TRestaurant } from '@/shared/api';
 import { motion } from 'framer-motion';
-import { useTopRestaurants } from '../model';
 import { CardRestaurant } from './CardRestaurant';
 
 interface IListRestaurants {
-    initialData: TRestaurant[];
+    data: TRestaurant[];
 }
 
-export const ListRestaurants = ({ initialData }: IListRestaurants) => {
-    const { data } = useTopRestaurants(initialData);
-
+export const ListRestaurants = ({ data }: IListRestaurants) => {
     const listVariants = {
         hidden: {},
         visible: {

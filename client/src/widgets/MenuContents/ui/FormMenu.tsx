@@ -1,35 +1,69 @@
 'use client';
 
-import { FormProvider, useForm } from 'react-hook-form';
-
 import { TFormMenu } from '@/widgets/MenuContents/formMenu.types';
+import { useRouter } from 'next/navigation';
+import { FormProvider, useForm } from 'react-hook-form';
+import { listMostPopular } from '../constants/listMostPopular';
+import { arrayRecomended } from '../constants/listRecomended';
 import { BarSearch } from './BarSearch';
+import { Filter } from './Filter';
 
 // TODO: Сделать валидацию формы
 
 interface IFormMenu {
-    selectedSearchParams: TFormMenu;
+    selectedSearchParams: {
+        [key: string]: string;
+    };
 }
 
 export const FormMenu = ({ selectedSearchParams }: IFormMenu) => {
+    const router = useRouter();
     const methods = useForm<TFormMenu>({
-        defaultValues: selectedSearchParams,
+        defaultValues: {
+            ...selectedSearchParams,
+            recomended: arrayRecomended.indexOf(
+                selectedSearchParams.recomended,
+            ),
+            mostPopular: listMostPopular.indexOf(
+                selectedSearchParams.mostPopular,
+            ),
+            price: Number(selectedSearchParams.price),
+        },
     });
 
     const { handleSubmit } = methods;
 
     const onSubmit = (data: TFormMenu) => {
-        // setQuery(data)
-        console.log(data);
+        const { appearance, category, mostPopular, price, recomended, search } =
+            data;
+
+        const recIndex = recomended || 0;
+        const rec = arrayRecomended[recIndex];
+
+        const mostPopIndex = mostPopular || 0;
+        const mostPop = listMostPopular[mostPopIndex];
+
+        router.push(
+            `?${new URLSearchParams({
+                ...(appearance ? { appearance } : {}),
+                ...(category ? { category } : {}),
+                ...(recomended ? { recomended: rec } : {}),
+                ...(mostPopular ? { mostPopular: mostPop } : {}),
+                ...(price ? { price: `${price}` } : {}),
+                ...(search ? { search } : {}),
+            })}`,
+        );
     };
 
     return (
-        <FormProvider {...methods}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {/* <Filter /> */}
-                <BarSearch />
-            </form>
-        </FormProvider>
+        <div>
+            <FormProvider {...methods}>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <Filter />
+                    <BarSearch />
+                </form>
+            </FormProvider>
+        </div>
     );
 };
 

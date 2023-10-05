@@ -1,21 +1,20 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import SvgArrowSwitch from '../assets/svg/SvgArrowSwitch';
 
 interface ITextSlider {
     data: string[];
-    returnValue: (textSliderValue: string) => void;
+    setValue: Dispatch<SetStateAction<number>>;
+    value: number;
 }
 
-export const TextSlider = ({ data, returnValue }: ITextSlider) => {
-    const [value, setValue] = useState<number>(0);
-
+export const TextSlider = ({ data, value, setValue }: ITextSlider) => {
     const handlerRight = () => {
         if (value === data.length - 1) {
             setValue(0);
         } else {
-            setValue((prev) => prev + 1);
+            setValue((prev: number) => prev + 1);
         }
     };
 
@@ -23,13 +22,9 @@ export const TextSlider = ({ data, returnValue }: ITextSlider) => {
         if (value === 0) {
             setValue(data.length - 1);
         } else {
-            setValue((prev) => prev - 1);
+            setValue((prev: number) => prev - 1);
         }
     };
-
-    useEffect(() => {
-        returnValue(data[value]);
-    }, [value]);
 
     return (
         <div className="flex">

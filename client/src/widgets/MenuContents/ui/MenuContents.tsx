@@ -1,27 +1,30 @@
-import { FormMenu } from './FormMenu';
-
 import { TDishe, TRestaurant } from '@/shared/api';
 import { dishesServices } from '@/shared/api/dishe/dishes';
 import { restaurantsServices } from '@/shared/api/restaurant/restaurants';
-import { undefined } from 'zod';
-import { TFormMenu } from '../formMenu.types';
+import { FormMenu } from './FormMenu';
 import { ListMenu } from './ListMenu';
 
 interface IMenuContents {
-    selectedSearchParams: TFormMenu;
+    selectedSearchParams: { [key: string]: string };
 }
 
-const getInitialData = async (selectedSearchParams: TFormMenu) => {
+const getInitialData = async (selectedSearchParams: {
+    [key: string]: string;
+}) => {
+    console.log(selectedSearchParams);
+
     const { appearance, ...query } = selectedSearchParams;
 
     if (appearance === 'restaurants') {
         return restaurantsServices.getRestaurantsByForm<TRestaurant[]>({
             ...query,
+            price: Number(selectedSearchParams.price),
         });
     }
     if (appearance === 'dishes') {
         return dishesServices.getDishesByForm<TDishe[]>({
             ...query,
+            price: Number(selectedSearchParams.price),
         });
     }
 

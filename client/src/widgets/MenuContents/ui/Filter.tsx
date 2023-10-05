@@ -17,11 +17,15 @@ import { ListCategory } from './ListCategory';
 import { TextSlider } from '@/shared/ui/TextSlider';
 
 export const Filter = () => {
-    const [price, setPrice] = useState<number>(0);
-    const [recomended, setRecomended] = useState<string>('');
-    const [mostPopular, setMostPopular] = useState<string>('');
+    const { setValue, getValues } = useFormContext();
 
-    const { setValue } = useFormContext();
+    const [price, setPrice] = useState<number>(0);
+    const [recomended, setRecomended] = useState<number>(
+        getValues('recomended'),
+    );
+    const [mostPopular, setMostPopular] = useState<number>(
+        getValues('mostPopular'),
+    );
 
     const middlewareSlider = (newValue: number[]) => {
         const actualValue = newValue[0];
@@ -71,11 +75,11 @@ export const Filter = () => {
         }
     };
 
-    const returnValueRecomended = (textSliderValue: string) =>
-        setRecomended(textSliderValue);
+    // const returnValueRecomended = (textSliderValue: string) =>
+    //     setRecomended(textSliderValue);
 
-    const returnValueMostPopular = (textSliderValue: string) =>
-        setMostPopular(textSliderValue);
+    // const returnValueMostPopular = (textSliderValue: string) =>
+    //     setMostPopular(textSliderValue);
 
     const handlerForm = () => {
         setValue('mostPopular', mostPopular);
@@ -102,8 +106,9 @@ export const Filter = () => {
                     Recomended
                 </span>
                 <TextSlider
+                    value={recomended}
                     data={arrayRecomended}
-                    returnValue={returnValueRecomended}
+                    setValue={setRecomended}
                 />
             </div>
             <div className="mt-[6.65px] flex justify-between">
@@ -111,8 +116,9 @@ export const Filter = () => {
                     Most Popular
                 </span>
                 <TextSlider
+                    value={mostPopular}
                     data={listMostPopular}
-                    returnValue={returnValueMostPopular}
+                    setValue={setMostPopular}
                 />
             </div>
             <span className="mt-5 block text-lg font-semibold text-tuna">
