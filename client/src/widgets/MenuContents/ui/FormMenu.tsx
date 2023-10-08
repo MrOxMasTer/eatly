@@ -52,6 +52,9 @@ export const FormMenu = ({ selectedSearchParams }: IFormMenu) => {
                 ...(price ? { price: `${price}` } : {}),
                 ...(search ? { search } : {}),
             })}`,
+            {
+                scroll: false,
+            },
         );
     };
 

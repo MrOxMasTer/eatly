@@ -19,6 +19,8 @@ export default function Menu({
         appearance: (searchParams.appearance as string) || '',
     };
 
+    console.log(selectedSearchParams);
+
     return (
         <>
             <div className="container">

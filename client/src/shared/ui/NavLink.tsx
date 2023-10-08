@@ -3,8 +3,8 @@
 import type { LinkProps } from 'next/link';
 import Link from 'next/link';
 
-import { format } from 'node:url';
 import type { UrlObject } from 'url';
+import { format } from 'url';
 
 import { usePathname } from 'next/navigation';
 import { cn } from '../lib/utils/cn';

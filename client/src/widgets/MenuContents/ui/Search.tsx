@@ -14,7 +14,6 @@ export const Search = () => {
                 className="ml-[1.6875rem] w-full bg-[#EDEDED] text-[0.75rem] text-spunPearl focus:outline-none"
                 type="text"
                 placeholder="Search"
-                name="formSearch"
             />
         </div>
     );

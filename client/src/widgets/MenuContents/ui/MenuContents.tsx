@@ -11,8 +11,6 @@ interface IMenuContents {
 const getInitialData = async (selectedSearchParams: {
     [key: string]: string;
 }) => {
-    console.log(selectedSearchParams);
-
     const { appearance, ...query } = selectedSearchParams;
 
     if (appearance === 'restaurants') {

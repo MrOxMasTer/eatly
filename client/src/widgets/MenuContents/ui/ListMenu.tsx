@@ -33,6 +33,7 @@ export const ListMenu = ({
                     () =>
                         data?.map((dishe) => (
                             <li key={`${dishe.title}${dishe.id}`}>
+                                {/*@ts-ignore */}
                                 <CardDishe dishe={dishe} />
                             </li>
                         )),
