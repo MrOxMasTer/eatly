@@ -1,16 +1,11 @@
-import { ButtonHTMLAttributes } from 'react';
+import Link from 'next/link';
 
-const Burger = ({
-    onClick,
-    ...props
-}: ButtonHTMLAttributes<HTMLButtonElement>) => (
-    <button
+const Burger = () => (
+    <Link
         className="flex h-[24px] w-[31.5px] items-center"
-        type="button"
-        onClick={onClick}
-        {...props}>
+        href={{ query: { modalActive: true } }}>
         <div className="menu-button" />
-    </button>
+    </Link>
 );
 
 export default Burger;
