@@ -1,11 +1,4 @@
-export class CreateDisheDto {
-    title: string;
+import { CreateDisheSchema } from 'contracts';
+import { createZodDto } from 'nestjs-zod';
 
-    price: number;
-
-    restaurantId: string;
-
-    deliveryTime: number;
-
-    status?: string;
-}
+export class CreateDisheDto extends createZodDto(CreateDisheSchema) {}

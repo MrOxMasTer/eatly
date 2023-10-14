@@ -1,9 +1,6 @@
-import { IsString } from 'class-validator';
+import { AddStatustRestaurantSchema } from 'contracts';
+import { createZodDto } from 'nestjs-zod';
 
-export class AddStatustRestaurant {
-    @IsString()
-    restaurantId: string;
-
-    @IsString()
-    statusValue: string;
-}
+export class AddStatustRestaurant extends createZodDto(
+  AddStatustRestaurantSchema,
+) {}

@@ -1,23 +1,6 @@
-import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { GetRestaurantsByFormSchema } from 'contracts';
+import { createZodDto } from 'nestjs-zod';
 
-export class GetRestaurantsByForm {
-  @IsString()
-  @IsOptional()
-  category?: string;
-
-  @IsString()
-  @IsOptional()
-  recomended?: string;
-
-  @IsString()
-  @IsOptional()
-  mostPopular?: string;
-
-  @IsNumber()
-  @IsOptional()
-  price?: number;
-
-  @IsString()
-  @IsOptional()
-  search?: string;
-}
+export class GetRestaurantsByForm extends createZodDto(
+  GetRestaurantsByFormSchema,
+) {}

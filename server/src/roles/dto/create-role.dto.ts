@@ -1,12 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { CreateRoleSchema } from 'contracts';
+import { createZodDto } from 'nestjs-zod';
 
-export class CreateRoleDto {
-    @ApiProperty({ example: 'ADMIN', description: 'Значение роли' })
-    @IsString()
-    value: string;
-
-    @IsString()
-    @ApiProperty({ example: 'Администратор', description: 'описание роли' })
-    description: string;
-}
+export class CreateRoleDto extends createZodDto(CreateRoleSchema) {}

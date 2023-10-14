@@ -10,9 +10,9 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 
 @Module({
-    imports: [RolesModule, forwardRef(() => AuthModule)],
-    providers: [UserService, PrismaService],
-    controllers: [UserController],
-    exports: [UserService],
+  imports: [RolesModule, forwardRef(() => AuthModule)],
+  providers: [UserService, PrismaService],
+  controllers: [UserController],
+  exports: [UserService],
 })
 export class UserModule {}

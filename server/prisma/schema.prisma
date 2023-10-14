@@ -74,14 +74,14 @@ model User {
 }
 
 model Restaurant {
-  id           String             @id @default("")
-  src          String             @default("")
+  id           String             @id
+  src          String
   statusModel  Status?            @relation(fields: [status], references: [value])
   status       String?
   category     Category[]
-  middleCheck  Float              @default(0.0)
-  title        String             @default("")
-  rating       Float              @default(0.0)
+  middleCheck  Float              @default(0)
+  title        String
+  rating       Float              @default(0)
   review       ReviewRestaurant[]
   deliveryTime Int                @default(0)
   dishes       Dishe[]
@@ -94,11 +94,11 @@ model Dishe {
   status       String?
   category     Category[]
   src          String?
-  title        String        @default("")
+  title        String
   deliveryTime Int           @default(0)
-  rating       Float         @default(0.0)
+  rating       Float         @default(0)
   review       ReviewDishe[]
-  price        Float         @default(0.0)
+  price        Float
   Restaurant   Restaurant    @relation(fields: [restaurantId], references: [id])
   restaurantId String
   User         User[]
@@ -109,8 +109,8 @@ model ReviewRestaurant {
   id           String     @id @default(uuid())
   User         User       @relation(fields: [userId], references: [id])
   userId       String
-  text         String     @default("")
-  rating       Int        @default(0)
+  text         String
+  rating       Int
   Restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
   restaurantId String
 }
@@ -119,8 +119,8 @@ model ReviewDishe {
   id      String @id @default(uuid())
   User    User   @relation(fields: [userId], references: [id])
   userId  String
-  text    String @default("")
-  rating  Int    @default(0)
+  text    String
+  rating  Int
   Dishe   Dishe  @relation(fields: [disheId], references: [id])
   disheId String
 }

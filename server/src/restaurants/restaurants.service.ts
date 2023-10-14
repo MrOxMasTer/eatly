@@ -9,6 +9,7 @@ import { FilesService } from 'src/files/files.service';
 import { DishesService } from 'src/dishes/dishes.service';
 
 import { AddStatustRestaurant } from './dto/add-status-restaurant.dto';
+import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { GetRestaurantsByForm } from './dto/get-restaurant-by-form.dto';
 
 @Injectable()
@@ -20,14 +21,11 @@ export class RestaurantsService {
     private dishesService: DishesService,
   ) {}
 
-  async createRestaurant(
-    dto: Prisma.RestaurantCreateInput,
-    image: Express.Multer.File,
-  ) {
+  async createRestaurant(dto: CreateRestaurantDto, image: Express.Multer.File) {
     const fileName = await this.filesService.createFile(image);
 
     return this.prismaService.restaurant.create({
-      data: { ...dto, id: dto.id.replace(/ /g, '_'), src: fileName },
+      data: { ...dto, id: dto.title.replace(/ /g, '_'), src: fileName },
     });
   }
 

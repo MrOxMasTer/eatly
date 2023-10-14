@@ -1,6 +1,4 @@
-import { IsString } from 'class-validator';
+import { CreateStatusSchema } from 'contracts';
+import { createZodDto } from 'nestjs-zod';
 
-export class CreateStatusDto {
-    @IsString()
-    value: string;
-}
+export class CreateStatusDto extends createZodDto(CreateStatusSchema) {}

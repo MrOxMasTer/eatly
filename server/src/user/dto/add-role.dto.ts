@@ -1,9 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { AddRoleToUserSchema } from 'contracts';
+import { createZodDto } from 'nestjs-zod';
 
-export class AddRoleDto {
-    @IsString()
-    value: string;
-
-    @IsNumber()
-    userId: string;
-}
+export class AddRoleDto extends createZodDto(AddRoleToUserSchema) {}

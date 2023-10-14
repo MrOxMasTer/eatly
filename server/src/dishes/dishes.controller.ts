@@ -6,25 +6,25 @@ import { GetDishesByForm } from './dto/get-dishes-by-form';
 
 @Controller('dishes')
 export class DishesController {
-    constructor(private dishesService: DishesService) {}
+  constructor(private dishesService: DishesService) {}
 
-    @Post('create')
-    async createDishe(@Body() dto: CreateDisheDto) {
-        return this.dishesService.createDishe(dto);
-    }
+  @Post('create')
+  async createDishe(@Body() dto: CreateDisheDto) {
+    return this.dishesService.createDishe(dto);
+  }
 
-    @Get('')
-    async getDishes() {
-        return this.dishesService.getDishes();
-    }
+  @Get('')
+  async getDishes() {
+    return this.dishesService.getDishes();
+  }
 
-    @Get('top')
-    async getTopDishes() {
-        return this.dishesService.getTopDishes();
-    }
+  @Get('top')
+  async getTopDishes() {
+    return this.dishesService.getTopDishes();
+  }
 
-    @Get('menu')
-    async getRestaurantsByForm(@Body() dto: GetDishesByForm) {
-        return this.dishesService.getDishesByForm(dto);
-    }
+  @Get('menu')
+  async getRestaurantsByForm(@Body() dto: GetDishesByForm) {
+    return this.dishesService.getDishesByForm(dto);
+  }
 }

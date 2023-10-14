@@ -1,9 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 
-import { ValidationPipe } from '@nestjs/common';
-
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
+import { ZodValidationPipe, patchNestJsSwagger } from 'nestjs-zod';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -21,6 +20,8 @@ async function bootstrap() {
     credentials: true,
   });
 
+  app.useGlobalPipes(new ZodValidationPipe());
+
   app.setGlobalPrefix('/api');
 
   const config = new DocumentBuilder()
@@ -30,11 +31,13 @@ async function bootstrap() {
     .addTag('Oxmaster')
     .build();
 
+  patchNestJsSwagger();
+
   const document = SwaggerModule.createDocument(app, config);
 
   SwaggerModule.setup('/docs', app, document);
 
-  app.useGlobalPipes(new ValidationPipe());
+  // app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(PORT, () => console.log(`SERVER STARTED: PORT=${PORT}`));
 }

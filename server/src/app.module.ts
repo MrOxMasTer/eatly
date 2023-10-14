@@ -16,23 +16,23 @@ import { StatusModule } from './status/status.module';
 import { UserModule } from './user/user.module';
 
 @Module({
-    imports: [
-        ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
-        ServeStaticModule.forRoot({
-            rootPath: join(__dirname, 'static'),
-        }),
-        DatabaseModule,
-        UserModule,
-        RolesModule,
-        AuthModule,
-        RestaurantsModule,
-        FilesModule,
-        StatusModule,
-        DishesModule,
-        CategoryModule,
-        EatlyBotModule,
-    ],
-    controllers: [],
-    providers: [],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, 'static'),
+    }),
+    DatabaseModule,
+    UserModule,
+    RolesModule,
+    AuthModule,
+    RestaurantsModule,
+    FilesModule,
+    StatusModule,
+    DishesModule,
+    CategoryModule,
+    EatlyBotModule,
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

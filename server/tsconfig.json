@@ -3,19 +3,35 @@
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
+    "strict": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
+    // "rootDir": "../",
     "outDir": "./dist",
     "baseUrl": "./",
+    "paths": {
+      // "@contracts/*": ["../contracts/schemes/*"]
+      // "@ui/*": ["src/ui/*"],
+      // "@assets/*": ["src/assets/*"],
+      // "@components/*": ["src/components/*"],
+      // "@hooks/*": ["src/hooks/*"],
+      // "@types/*": ["src/types/*"]
+      // "@services/*": ["src/services/*"],
+      // "@store/*": ["src/store/*"],
+      // "@modules/*": ["src/modules/*"],
+      // "@lib/*": ["src/lib/*"],
+      // "@public/*": ["src/lib/*"]
+    },
     "incremental": true,
     "skipLibCheck": true,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false
   }
+  // "exclude": ["client"]
 }

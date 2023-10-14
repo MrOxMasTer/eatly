@@ -1,18 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { GetDishesByFormSchema } from 'contracts';
+import { createZodDto } from 'nestjs-zod';
 
-export class GetDishesByForm {
-    @IsString()
-    category: string;
-
-    @IsString()
-    recomended: string;
-
-    @IsString()
-    mostPopular: string;
-
-    @IsNumber()
-    price: number;
-
-    @IsString()
-    search: string;
-}
+export class GetDishesByForm extends createZodDto(GetDishesByFormSchema) {}

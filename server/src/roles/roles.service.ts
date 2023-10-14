@@ -4,29 +4,25 @@ import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
 export class RolesService {
-    constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
-    async createRole(data: Prisma.RoleCreateInput): Promise<Role> {
-        const role = await this.prisma.role.create({ data });
+  async createRole(dto: Prisma.RoleCreateInput): Promise<Role> {
+    const role = await this.prisma.role.create({ data: dto });
 
-        return role;
-    }
+    return role;
+  }
 
-    async getRoleByValue(
-        roleWhereUniqueInput: Prisma.RoleWhereUniqueInput,
-    ): Promise<Role | null> {
-        const { value } = roleWhereUniqueInput;
-        const role = await this.prisma.role.findUnique({ where: { value } });
+  async getRoleByValue(dto: Prisma.RoleWhereUniqueInput): Promise<Role | null> {
+    const { value } = dto;
+    const role = await this.prisma.role.findUnique({ where: { value } });
 
-        return role;
-    }
+    return role;
+  }
 
-    async deleteRoleByValue(
-        roleWhereUniqueInput: Prisma.RoleWhereUniqueInput,
-    ): Promise<Role> {
-        const { value } = roleWhereUniqueInput;
-        const role = await this.prisma.role.delete({ where: { value } });
+  async deleteRoleByValue(dto: Prisma.RoleWhereUniqueInput): Promise<Role> {
+    const { value } = dto;
+    const role = await this.prisma.role.delete({ where: { value } });
 
-        return role;
-    }
+    return role;
+  }
 }

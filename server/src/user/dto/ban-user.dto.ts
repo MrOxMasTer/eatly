@@ -1,9 +1,4 @@
-import { IsNumber, IsString } from 'class-validator';
+import { BanUserSchema } from 'contracts';
+import { createZodDto } from 'nestjs-zod';
 
-export class BanUserDto {
-    @IsNumber()
-    readonly userId: string;
-
-    @IsString()
-    readonly banReason: string;
-}
+export class BanUserDto extends createZodDto(BanUserSchema) {}

@@ -1,0 +1,14 @@
+{
+  "name": "contracts",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./build/index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
