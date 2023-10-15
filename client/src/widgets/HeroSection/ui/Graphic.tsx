@@ -2,6 +2,7 @@
 
 import {
     CartesianGrid,
+    Label,
     Line,
     LineChart,
     ReferenceDot,
@@ -47,27 +48,27 @@ export const Graphic = () => {
                         type="monotone"
                     />
                     <ReferenceDot
-                        className={!yes ? 'hidden' : 'block'}
                         fill="#C5BFED"
                         r={1.5}
                         stroke="#6C5FBC"
                         strokeWidth={1}
                         x={11}
                         y={409}>
-                        {/* <Label
-                            offset={0}
-                            position="insideBottom"
-                            value="$409"
-                        /> */}
+                        <Label
+                            className="w-fit fill-primary px-[2.5px] py-[0.8px] text-[2.6px] font-semibold text-white"
+                            offset={4}
+                            position="insideBottomLeft">
+                            $409
+                        </Label>
                     </ReferenceDot>
                 </LineChart>
             </ResponsiveContainer>
-            <span
+            {/* <span
                 className={`${
                     !yes ? 'hidden' : 'block'
                 } absolute right-[8px] top-[8px] block h-[6px] w-fit rounded-[7.955px] bg-primary px-[2.5px] py-[0.8px] text-[2.6px] font-semibold text-white`}>
                 <span className="relative right-[0.3px] top-[-10px]">$409</span>
-            </span>
+            </span> */}
         </div>
     );
 };

@@ -6,6 +6,8 @@ import { QuoteCustomer } from '@/widgets/QuoteCustomer';
 import { TopDishes } from '@/widgets/TopDishes';
 import { TopRestaurants } from '@/widgets/TopRestaurants';
 
+//!В первых трех проблема с key в списке
+
 export default function Home() {
     return (
         <main className="overflow-hidden bg-pureWhite">

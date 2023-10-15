@@ -3,14 +3,15 @@
     "version": "0.3.0",
     "private": true,
     "scripts": {
-        "dev": "run-p -r dev",
-        "devNext": "next dev --turbo",
+        "dev": "next dev --turbo",
         "build": "next build",
         "start": "next start",
+        "analyze": "ANALYZE=true next build",
         "lint": "next lint",
         "ngrok": "npx ngrok start web --config \"G:/Programmy/Practic Website/eatly/ngrok.yml\""
     },
     "dependencies": {
+        "@next/bundle-analyzer": "^13.5.4",
         "@radix-ui/react-accordion": "^1.1.2",
         "@radix-ui/react-progress": "^1.0.3",
         "@radix-ui/react-select": "^1.2.2",
@@ -35,7 +36,7 @@
         "react-dom": "^18.2.0",
         "react-hook-form": "^7.45.2",
         "react-select": "^5.7.4",
-        "recharts": "^2.7.2",
+        "recharts": "^2.9.0",
         "server-only": "^0.0.1",
         "sharp": "^0.32.4",
         "tailwind-merge": "^1.14.0",
@@ -46,6 +47,7 @@
         "zustand": "^4.3.9"
     },
     "devDependencies": {
+        "@svgr/webpack": "^8.1.0",
         "@typescript-eslint/eslint-plugin": "^6.1.0",
         "@typescript-eslint/parser": "^6.1.0",
         "autoprefixer": "^10.4.14",

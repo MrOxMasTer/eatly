@@ -1,7 +1,7 @@
+import { ListDishes } from '@/entities/dishe/ui/ListDishes';
 import { TDishe } from '@/shared/api';
 import { dishesServices } from '@/shared/api/dishe/dishes';
 import { ViewAll } from '@/shared/ui/ViewAll';
-import { ListDishes } from '../../../entities/dishe/ui/ListDishes';
 
 export const TopDishes = async () => {
     const initialData = await dishesServices.getTopDishes<TDishe[]>();

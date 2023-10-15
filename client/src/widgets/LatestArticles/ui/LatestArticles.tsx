@@ -1,8 +1,7 @@
+import SvgBack from '@/shared/assets/svg/SvgBack';
 import { ListArticles } from './ListArticles';
 
 export const LatestArticles = () => {
-    const list = [];
-
     return (
         <section>
             <div className="container">
@@ -10,6 +9,7 @@ export const LatestArticles = () => {
                     Latest <span className="text-primary">Articles</span>
                 </h2>
                 <ListArticles />
+                <SvgBack />
             </div>
         </section>
     );

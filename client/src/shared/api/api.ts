@@ -8,5 +8,3 @@ export const api = axios.create({
         'ngrok-skip-browser-warning': '69420',
     },
 });
-
-export const http = fetch('', {});

@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+});
+
+const NextConfig = {
     async redirects() {
         return [
             {
@@ -22,3 +27,5 @@ module.exports = {
         // deviceSizes: [375, 640, 750, 828, 1080, 1200, 1920],
     },
 };
+
+module.exports = withBundleAnalyzer(NextConfig);

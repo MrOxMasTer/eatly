@@ -4,7 +4,9 @@ import { LatestArticles } from '@/widgets/LatestArticles';
 
 const Blog = () => (
     <main>
-        <EmailSubscribe />
+        <div className="container">
+            <EmailSubscribe />
+        </div>
         <LatestArticles />
         <FrequentQuestions />
     </main>

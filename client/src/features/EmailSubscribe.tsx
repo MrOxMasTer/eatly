@@ -30,7 +30,7 @@ export const EmailSubscribe = () => (
         </div>
         <Image
             alt="decorate sweDish"
-            className="absolute inset-x-0 bottom-[-102px] mx-auto h-[170.6] w-[169px] object-contain"
+            className="absolute inset-x-0 bottom-[-80px] mx-auto h-[170.6] w-[169px] object-contain"
             src={SweDishBig}
         />
     </div>
