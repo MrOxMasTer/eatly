@@ -2,8 +2,8 @@ import z, { string } from "zod";
 
 export const CreateUserSchema = z.object({
   email: string().email().describe("Почта"),
-  name: string().length(4).describe("Имя пользователя"),
-  password: string().describe("Пароль пользователя"),
+  name: string().min(4).describe("Имя пользователя"),
+  password: string().min(6).describe("Пароль пользователя"),
 });
 
 export type CreateUser = z.infer<typeof CreateUserSchema>;

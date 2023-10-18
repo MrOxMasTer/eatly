@@ -1,5 +1,6 @@
 import { Footer } from '@/widgets/Footer';
 import { Header } from '@/widgets/header';
+import { Toaster } from 'sonner';
 
 export default function DevicesLayout({
     children,
@@ -14,6 +15,7 @@ export default function DevicesLayout({
             <Header />
             {children}
             <Footer />
+            <Toaster />
         </>
     );
 }

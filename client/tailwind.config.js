@@ -76,6 +76,8 @@ module.exports = {
             dodgerBlue: '#5A85FF',
             resolutionBlue: '#002073',
             frenchGray: '#C2C3CB',
+            japaneseLaurel: '#005a64',
+            aluminium: '#A2A3A6',
         },
         fontFamily: {
             eatly: [

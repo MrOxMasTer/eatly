@@ -1,21 +1,19 @@
-import { IUser } from '@/shared/api/user/models';
-import { create } from 'zustand';
+'use client';
 
-export const useUser = create<IUser>((set, get) => ({
-    id: 0,
-    selectedRestaurants: [],
+import { usersServices } from '@/shared/api/user/users';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { CreateUser } from 'contracts';
 
-    // addSelectedRestaurants: (sel) =>
-    //     set((state) => ({
-    //         ...state,
-    //         selectedRestaurants: [...state.selectedRestaurants, sel],
-    //     })),
+export const useCreateUser = () => {
+    const queryClient = useQueryClient();
 
-    // removeSelectedRestaurants: (id) =>
-    //     set((state) => ({
-    //         ...state,
-    //         selectedRestaurants: state.selectedRestaurants.filter(
-    //             (item) => item.id !== id,
-    //         ),
-    //     })),
-}));
+    return useMutation({
+        mutationFn: async (data: CreateUser) =>
+            usersServices.createUser<CreateUser>(data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: ['user'],
+            });
+        },
+    });
+};

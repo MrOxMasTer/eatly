@@ -7,8 +7,6 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-import get from 'lodash/';
-
 const DynamicMenu = dynamic(() => import('../../../widgets/header/ui/Menu'));
 
 export default function MenuModal() {

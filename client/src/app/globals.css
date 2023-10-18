@@ -127,6 +127,130 @@
 
         @apply placeholder:font-semibold placeholder:text-nobel;
     }
+
+    .label {
+        padding: 20px 23px 19px;
+        background: #eee;
+        border-radius: 11.516px;
+        width: 100%;
+        height: 60px;
+        display: flex;
+        gap: 25px;
+
+        &:focus-within {
+            background: #fff;
+            outline: 1.75px solid #6c5fbc;
+        }
+
+        svg {
+            flex-shrink: 0;
+        }
+
+        input {
+            width: 100%;
+            background: #eee;
+            color: #6c5fbc;
+            font-size: 13.5px;
+            font-weight: 500;
+
+            @apply placeholder:text-[0.8438rem] placeholder:font-semibold placeholder:uppercase placeholder:text-aluminium;
+        }
+
+        input:focus {
+            outline: none;
+            background: #fff;
+        }
+    }
+
+    .label-human {
+        &:focus-within {
+            div::before {
+                display: none;
+            }
+
+            div::after {
+                display: block;
+            }
+        }
+
+        div::before {
+            content: url('/images/user-icon.svg');
+            display: block;
+            transform: translateY(1px);
+        }
+
+        div::after {
+            content: url('/images/user-icon-active.svg');
+            display: none;
+            transform: translateY(1px);
+        }
+    }
+
+    .label-email {
+        &:focus-within {
+            div::before {
+                display: none;
+            }
+
+            div::after {
+                display: block;
+            }
+        }
+
+        div::before {
+            content: url('/images/email.svg');
+            display: block;
+            transform: translateY(1px);
+        }
+
+        div::after {
+            content: url('/images/email-active.svg');
+            display: none;
+            transform: translateY(1px);
+        }
+    }
+
+    .label-password {
+        &:focus-within {
+            .icon-password::before {
+                display: none;
+            }
+
+            .icon-password::after {
+                display: block;
+            }
+
+            .icon-not-prominent::before {
+                display: none;
+            }
+
+            .icon-not-prominent::after {
+                display: block;
+            }
+        }
+
+        .icon-password::before {
+            content: url('/images/password.svg');
+            display: block;
+        }
+
+        .icon-password::after {
+            content: url('/images/password-active.svg');
+            display: none;
+        }
+
+        .icon-not-prominent::before {
+            content: url('/images/icon-not-prominent.svg');
+            display: block;
+            transform: translateY(2px);
+        }
+
+        .icon-not-prominent::after {
+            content: url('/images/icon-not-prominent-active.svg');
+            display: none;
+            transform: translateY(2px);
+        }
+    }
 }
 
 @layer utilities {

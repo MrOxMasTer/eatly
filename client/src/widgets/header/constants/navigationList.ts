@@ -24,4 +24,8 @@ export const navigationList: TNavigation[] = [
         href: '/contact',
         title: 'Contact',
     },
+    {
+        href: '/auth/signUp',
+        title: 'SignUp',
+    },
 ];

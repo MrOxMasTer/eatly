@@ -1,5 +1,6 @@
 import {
   BadRequestException,
+  ConflictException,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
@@ -20,9 +21,7 @@ export class AuthService {
     const candidate = await this.userService.getUserByEmail(userDto.email);
 
     if (candidate) {
-      throw new BadRequestException(
-        'Пользователь с таким email уже существует',
-      );
+      throw new ConflictException('Пользователь с таким email уже существует');
     }
 
     const hashPassword = await argon2.hash(userDto.password);
