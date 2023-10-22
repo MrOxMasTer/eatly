@@ -24,6 +24,7 @@ export const CardInfoExpense = () => (
             </span>
         </div>
         <Progress
+            aria-label="decorate-progress"
             className="mt-[12.1px] h-[5.6px] bg-primary/20"
             classNameIndicator="bg-primary"
             value={70}

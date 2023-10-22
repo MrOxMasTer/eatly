@@ -1,5 +1,4 @@
 import { TopListRestaurants } from '@/entities/restaurant/ui/TopListRestaurants';
-import { TRestaurant } from '@/shared/api';
 import { restaurantsServices } from '@/shared/api/restaurant/restaurants';
 import { ViewAll } from '@/shared/ui/ViewAll';
 
@@ -9,9 +8,7 @@ export const TopRestaurants = async ({
 }: {
     className?: string;
 }) => {
-    const initialData = await restaurantsServices.getTopRestaurants<
-        TRestaurant[]
-    >();
+    const { data } = await restaurantsServices.getTopRestaurants();
 
     return (
         <section className={className} {...props}>
@@ -19,7 +16,7 @@ export const TopRestaurants = async ({
                 <h2 className="mt-[1.125rem] text-center text-[1.875rem] font-semibold leading-[120%] text-tuna">
                     Our Top <span className="text-primary">Restaurants</span>
                 </h2>
-                <TopListRestaurants initialData={initialData} />
+                <TopListRestaurants initialData={data} />
                 <ViewAll className="ml-auto mt-[60px] w-fit" href="/" />
             </div>
         </section>

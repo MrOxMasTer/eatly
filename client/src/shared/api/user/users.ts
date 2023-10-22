@@ -1,10 +1,8 @@
+import { CreateUser } from 'contracts';
 import { api } from '../api';
 
 export const usersServices = {
-    async createUser<T>(data: T) {
-        return api
-            .post<T>(`/auth/registration`, data)
-            .then((resp) => resp)
-            .catch((error) => error);
+    async createUser(data: CreateUser) {
+        return api.post<unknown>(`/auth/registration`, data);
     },
 };

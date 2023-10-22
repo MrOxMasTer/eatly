@@ -1,4 +1,3 @@
-import { TDishe, TRestaurant } from '@/shared/api';
 import { dishesServices } from '@/shared/api/dishe/dishes';
 import { restaurantsServices } from '@/shared/api/restaurant/restaurants';
 import { FormMenu } from './FormMenu';
@@ -14,16 +13,20 @@ const getInitialData = async (selectedSearchParams: {
     const { appearance, ...query } = selectedSearchParams;
 
     if (appearance === 'restaurants') {
-        return restaurantsServices.getRestaurantsByForm<TRestaurant[]>({
+        const res = await restaurantsServices.getRestaurantsByForm({
             ...query,
             price: Number(selectedSearchParams.price),
         });
+
+        return res;
     }
     if (appearance === 'dishes') {
-        return dishesServices.getDishesByForm<TDishe[]>({
+        const res = await dishesServices.getDishesByForm({
             ...query,
             price: Number(selectedSearchParams.price),
         });
+
+        return res;
     }
 
     return undefined;

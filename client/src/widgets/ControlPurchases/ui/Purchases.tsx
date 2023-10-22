@@ -27,7 +27,9 @@ export const Purchases = () => {
                 <Select
                     value={value}
                     onValueChange={(newValue) => setValue(newValue)}>
-                    <SelectTrigger className="h-8 w-[104px] rounded-[7.443px] bg-alabaster px-[10.8px] py-[7.32px] font-manrope text-[11px] font-semibold tracking-[0.372px] text-tuna focus:border-none">
+                    <SelectTrigger
+                        aria-label="decorate-select"
+                        className="h-8 w-[104px] rounded-[7.443px] bg-alabaster px-[10.8px] py-[7.32px] font-manrope text-[11px] font-semibold tracking-[0.372px] text-tuna focus:border-none">
                         <SelectValue className="text-tuna" />
                     </SelectTrigger>
                     <SelectContent>

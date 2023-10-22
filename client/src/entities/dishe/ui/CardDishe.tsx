@@ -13,8 +13,11 @@ export const CardDishe = ({ dishe }: TListItemDishes) => (
         style={{
             boxShadow: '4.48px 53.75px 26.88px 0px rgba(229, 229, 229, 0.70)',
         }}>
-        <button className="absolute right-0 top-0 z-10" type="button">
-            <SvgHeart className="translate-x-[-14px] translate-y-[15px]" />
+        <button
+            title="Add to favorites"
+            className="absolute right-[14px] top-[15px] z-10"
+            type="button">
+            <SvgHeart />
         </button>
         <div className="h-[120px] bg-white">
             {/* <Image
@@ -30,9 +33,9 @@ export const CardDishe = ({ dishe }: TListItemDishes) => (
                 className="px-[4.9px] text-[7.5px] leading-[1.935]"
                 status={dishe.status}
             />
-            <h4 className="text-[15px] font-semibold leading-6 text-tuna">
+            <span className="text-[15px] font-semibold leading-6 text-tuna">
                 {dishe.title}
-            </h4>
+            </span>
             <div>
                 <span className="flex items-center gap-[3.77px] font-manrope text-[11.3px] leading-[20.5px] text-grey">
                     {dishe.deliveryTime}min •

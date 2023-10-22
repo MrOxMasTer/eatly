@@ -26,7 +26,7 @@ export const CardRestaurant = ({
                 boxShadow:
                     '4.73px 56.75px 28.38px 0px rgba(229, 229, 229, 0.70)',
             }}>
-            <Link href={link}>
+            <Link aria-label="Picture with reference" href={link}>
                 <div className="relative h-[140px] bg-nobel/60">
                     {/* <Image fill alt={restaurant.title} src={restaurant.src} /> */}
                 </div>
@@ -37,7 +37,7 @@ export const CardRestaurant = ({
                         className="h-[19.75px] px-[6.7px] text-[10px]"
                         status={restaurant.status}
                     />
-                    <Link href={link}>
+                    <Link className="block w-fit" href={link}>
                         <h4 className="break-all text-[1.2813rem] font-semibold leading-[2.0812rem] text-tuna">
                             {restaurant.title}
                         </h4>
@@ -51,6 +51,7 @@ export const CardRestaurant = ({
                     </div>
                 </div>
                 <button
+                    title="Add to favorites"
                     className="absolute bottom-[13.5px] right-[21.2px] h-[33px] w-[33px] cursor-pointer rounded-full bg-lightPrimary hover:scale-105"
                     style={{ transition: 'transform 0.2s' }}
                     type="button"

@@ -16,6 +16,7 @@ export const QuoteCustomer = () => (
                 <Quote />
             </div>
             <Progress
+                aria-label="decorate-progress"
                 className="mt-[46px] h-[5px] bg-primary/20"
                 classNameIndicator="bg-primary"
                 value={30}

@@ -8,8 +8,11 @@ export const useCreateUser = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: async (data: CreateUser) =>
-            usersServices.createUser<CreateUser>(data),
+        mutationFn: async (data: CreateUser) => {
+            const res = await usersServices.createUser(data);
+
+            return res;
+        },
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ['user'],

@@ -9,7 +9,10 @@ interface ILogoProps extends LinkProps {
 }
 
 export const Logo = ({ href, className }: ILogoProps) => (
-    <Link className={cn('block w-fit', className)} href={href}>
+    <Link
+        aria-label="Logo with a link to the main site"
+        className={cn('block w-fit', className)}
+        href={href}>
         <SvgLogo />
     </Link>
 );

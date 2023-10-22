@@ -8,7 +8,7 @@ export const Footer = () => (
     <footer className="mt-auto bg-gallery">
         <div className="container pt-[55px]">
             <div className="flex justify-center">
-                <Link href="/">
+                <Link aria-label="Logo with a link to the main site" href="/">
                     <SvgLogo className="w-[99.4px]" />
                 </Link>
             </div>

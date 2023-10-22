@@ -15,7 +15,7 @@ export default function DevicesLayout({
             <Header />
             {children}
             <Footer />
-            <Toaster />
+            <Toaster position="top-right" />
         </>
     );
 }

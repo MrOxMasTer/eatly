@@ -1,10 +1,9 @@
 import { ListDishes } from '@/entities/dishe/ui/ListDishes';
-import { TDishe } from '@/shared/api';
 import { dishesServices } from '@/shared/api/dishe/dishes';
 import { ViewAll } from '@/shared/ui/ViewAll';
 
 export const TopDishes = async () => {
-    const initialData = await dishesServices.getTopDishes<TDishe[]>();
+    const { data } = await dishesServices.getTopDishes();
 
     return (
         <section className="border-t border-solid border-silver">
@@ -12,7 +11,7 @@ export const TopDishes = async () => {
                 <h2 className="mt-[1.125rem] text-center text-[1.875rem] font-semibold leading-[120%] text-tuna">
                     Our Top <span className="text-primary">Dishes</span>
                 </h2>
-                <ListDishes initialData={initialData} />
+                <ListDishes initData={data} />
                 <ViewAll className="ml-auto mt-[60px] w-fit" href="/" />
             </div>
         </section>

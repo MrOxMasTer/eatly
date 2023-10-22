@@ -1,16 +1,16 @@
 'use client';
 
-import { useTopDishes } from '@/entities/dishe/model';
-import { CardDishe } from '@/entities/dishe/ui';
-import { TDishe } from '@/shared/api';
 import { motion } from 'framer-motion';
+import { useTopDishes } from '../model';
+import { CardDishe } from './CardDishe';
+import { TDishe } from '@/shared/api';
 
-interface IListDishes {
-    initialData: TDishe[];
+interface IListDishesProps {
+    initData: TDishe[];
 }
 
-export const ListDishes = ({ initialData }: IListDishes) => {
-    const { data } = useTopDishes(initialData);
+export const ListDishes = ({ initData }: IListDishesProps) => {
+    const { data } = useTopDishes(initData);
 
     const listVariants = {
         hidden: {},

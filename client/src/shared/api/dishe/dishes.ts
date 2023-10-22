@@ -2,6 +2,7 @@
 
 import { TFormMenuLite } from '@/widgets/MenuContents/formMenu.types';
 import { api } from '../api';
+import { TDishe } from './models';
 
 export const dishesServices = {
     async getDishes<T>() {
@@ -9,25 +10,21 @@ export const dishesServices = {
         // .then(SRestaurants.parse);
     },
 
-    async getTopDishes<T>() {
-        return api.get<T>('/dishes/top').then((response) => response?.data);
-        // .then(SRestaurants.parse);
+    async getTopDishes() {
+        return api.get<TDishe[]>('/dishes/top');
     },
 
-    async getDishesByForm<T>(query: TFormMenuLite) {
+    async getDishesByForm(query: TFormMenuLite) {
         const { category, mostPopular, price, recomended, search } = query;
 
-        return api
-            .get<T>('/dishes/menu', {
-                params: {
-                    ...(search ? { search } : {}),
-                    ...(category ? { category } : {}),
-                    ...(mostPopular ? { mostPopular } : {}),
-                    ...(price ? { price } : {}),
-                    ...(recomended ? { recomended } : {}),
-                },
-            })
-            .then((response) => response?.data);
-        // .then(SRestaurants.parse);
+        return api.get<TDishe[]>('/dishes/menu', {
+            params: {
+                ...(search ? { search } : {}),
+                ...(category ? { category } : {}),
+                ...(mostPopular ? { mostPopular } : {}),
+                ...(price ? { price } : {}),
+                ...(recomended ? { recomended } : {}),
+            },
+        });
     },
 };

@@ -6,7 +6,7 @@ import { CreateUser, CreateUserSchema } from 'contracts';
 import { useForm } from 'react-hook-form';
 
 export const SignUpForm = () => {
-    const { mutateAsync: createUser, error } = useCreateUser();
+    const { mutateAsync: createUser, isError, error } = useCreateUser();
 
     const {
         register,
@@ -18,10 +18,11 @@ export const SignUpForm = () => {
 
     const onSubmit = async (data: CreateUser) => {
         if (isValid) {
-            const user = await createUser(data);
-
-            if (user?.response) {
-                console.log(user?.response?.data?.message);
+            try {
+                const res = await createUser(data);
+                console.log('запрос:', res);
+            } catch (e) {
+                console.log('TRY:', e);
             }
         }
     };

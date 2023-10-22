@@ -1,5 +1,6 @@
 // TODO: сделать валидацию всех запросов
 
+import { TRestaurant } from '@/shared/api';
 import { TFormMenuLite } from '@/widgets/MenuContents/formMenu.types';
 import { api } from '../api';
 
@@ -15,27 +16,23 @@ export const restaurantsServices = {
         // .then(SRestaurants.parse);
     },
 
-    async getTopRestaurants<T>() {
-        return api
-            .get<T>('/restaurants/top')
-            .then((response) => response?.data);
+    async getTopRestaurants() {
+        return api.get<TRestaurant[]>('/restaurants/top');
         // .then(SRestaurants.parse);
     },
 
-    async getRestaurantsByForm<T>(query: TFormMenuLite) {
+    async getRestaurantsByForm(query: TFormMenuLite) {
         const { category, mostPopular, price, recomended, search } = query;
 
-        return api
-            .get<T>('/restaurants/menu', {
-                params: {
-                    ...(search ? { search } : {}),
-                    ...(category ? { category } : {}),
-                    ...(mostPopular ? { mostPopular } : {}),
-                    ...(price ? { price } : {}),
-                    ...(recomended ? { recomended } : {}),
-                },
-            })
-            .then((response) => response?.data);
+        return api.get<TRestaurant[]>('/restaurants/menu', {
+            params: {
+                ...(search ? { search } : {}),
+                ...(category ? { category } : {}),
+                ...(mostPopular ? { mostPopular } : {}),
+                ...(price ? { price } : {}),
+                ...(recomended ? { recomended } : {}),
+            },
+        });
         // .then(SRestaurants.parse);
     },
 };
